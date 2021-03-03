@@ -12,12 +12,14 @@ You can create a `.env.development` file in the folder root...
 #.env.development
 
 MYSQL_USER='username'
+MYSQL_DATABASE='development'
 MYSQL_PASSWORD='password'
 MYSQL_ROOT_PASSWORD='password'
 MYSQL_PORT=9002
 
 POSTGRES_USER='postgres'
 POSTGRES_PASSWORD='postgres'
+POSTGRES_DB='development'
 POSTGRES_PORT=9003
 
 ```
