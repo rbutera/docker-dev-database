@@ -1,6 +1,6 @@
 services:
   mysql-dev-server:
-    image: mysql:5.7
+    image: mysql/mysql-server:5.7
     restart: always
     environment:
       - MYSQL_DATABASE
