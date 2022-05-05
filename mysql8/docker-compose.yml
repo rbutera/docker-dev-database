@@ -2,7 +2,7 @@ services:
   mysql:
     container_name: mysql8_dev
     command: --sql_mode="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
-    image: mariadb:10.6.7
+    image: mariadb:10.6
     restart: always
     environment:
       - MYSQL_DATABASE
