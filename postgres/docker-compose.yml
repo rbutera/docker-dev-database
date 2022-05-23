@@ -3,6 +3,12 @@ services:
     container_name: postgres_dev
     image: postgres:14.2
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    command: ["postgres", "-c", "log_statement=all"]
     environment:
       - POSTGRES_DB
       # So you don't have to use root, but you can if you like
