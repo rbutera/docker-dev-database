@@ -1,7 +1,7 @@
 services:
-  db:
-    container_name: postgres_dev
-    image: postgres:14.2
+  postgres_14:
+    container_name: postgres_14
+    image: postgres:14.13
     restart: always
     logging:
       driver: "json-file"
@@ -23,7 +23,34 @@ services:
       - "5432"
       # Where our data will be persisted
     volumes:
-      - postgresdb:/var/lib/postgresql/data
+      - postgres14db:/var/lib/postgresql/data
+  postgres_16:
+    container_name: postgres_16
+    image: postgres:16
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    command: ["postgres", "-c", "log_statement=mod"]
+    environment:
+      - POSTGRES_DB
+      # So you don't have to use root, but you can if you like
+      - POSTGRES_USER
+      # You can use whatever password you like
+      - POSTGRES_PASSWORD
+    ports:
+      # <Port exposed> : < POSTGRES Port running inside container>
+      - "5433:5432"
+    expose:
+      # Opens port 5432 on the container
+      - "5432"
+      # Where our data will be persisted
+    volumes:
+      - postgres16db:/var/lib/postgresql/data
+
 # Names our volume
 volumes:
-  postgresdb:
+  postgres14db:
+  postgres16db:
